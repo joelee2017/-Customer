@@ -23,5 +23,12 @@ namespace 認識資料模型Customer
             customersBindingSource.DataSource = dc.Customers.ToArray();
             //ToArray 限用於視窗軟體，其它會嚴重影響效能
         }
+
+        private void customersBindingSource_PositionChanged(object sender, EventArgs e)
+        {
+            ordersBindingSource.DataSource = ((Customers)customersBindingSource.Current).Orders.ToList();
+            //((Customers)customersBindingSource.Current).Orders.ToList(); 
+            //接order需要將customersBindingSource.Current轉型成Customers
+        }
     }
 }
