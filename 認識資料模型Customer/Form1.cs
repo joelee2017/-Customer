@@ -16,5 +16,12 @@ namespace 認識資料模型Customer
         {
             InitializeComponent();
         }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            NorthwindEntities dc = new NorthwindEntities();
+            customersBindingSource.DataSource = dc.Customers.ToArray();
+            //ToArray 限用於視窗軟體，其它會嚴重影響效能
+        }
     }
 }
